@@ -288,31 +288,56 @@ footer{background:var(--cream2);border-top:1px solid var(--ink-ghost);padding:cl
   .info-bar{flex-direction:column;align-items:flex-start;gap:.4rem;padding:.6rem 20px}
   .info-item{font-size:.68rem}
 
-  /* フィルター：横スクロール対応・画面幅に収める */
+  /* フィルター：タブ行・ボタン行それぞれ独立横スクロール */
   .filter-wrap{overflow:hidden}
-  .filter-tabs{padding:0 16px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap}
+  .filter-tabs{
+    padding:0;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    flex-wrap:nowrap;
+    display:flex;
+    border-bottom:1px solid var(--ink-ghost)
+  }
   .filter-tabs::-webkit-scrollbar{display:none}
-  .filter-panel{padding:0 16px}
-  .filter-list{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .filter-tabs{scrollbar-width:none}
+  .ftab{
+    font-size:.52rem;
+    padding:.85rem 1rem .85rem 1rem;
+    margin-right:0;
+    white-space:nowrap;
+    flex-shrink:0
+  }
+  .filter-panel{padding:0}
+  .filter-list{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    display:flex;
+    padding:0 4px
+  }
   .filter-list::-webkit-scrollbar{display:none}
-  .ftab{font-size:.48rem;padding:.75rem .6rem .75rem 0;margin-right:.4rem;white-space:nowrap;flex-shrink:0}
-  .fbtn{font-size:.48rem;padding:.7rem .6rem;white-space:nowrap}
+  .filter-list{scrollbar-width:none}
+  .fbtn{
+    font-size:.52rem;
+    padding:.8rem .8rem;
+    white-space:nowrap;
+    flex-shrink:0
+  }
 
   /* セクション */
   .section{padding:40px 20px 8px}
   .sec-title{font-size:clamp(1.1rem,5vw,1.5rem)}
 
-  /* グリッド：2列表示 */
+  /* グリッド：2列 */
   .pgrid{grid-template-columns:repeat(2,1fr);gap:8px}
 
   /* カード：2列幅に最適化 */
-  .pcard{padding:.8rem .7rem}
+  .pcard{padding:.8rem .65rem}
   .pimg{padding:4px 6px 0;margin-bottom:.6rem}
-  .pprice{font-size:.46rem;margin-bottom:.3rem;line-height:1.5}
-  .pfor{font-size:.46rem;padding:.2rem .4rem;margin-bottom:.5rem;line-height:1.6}
-  .taka-quote{font-size:.58rem;line-height:1.7;margin-bottom:.7rem}
-  .pname{font-size:.52rem}
-  .pname-maker,.pname-product{font-size:.48rem}
+  .pprice{font-size:.45rem;margin-bottom:.3rem;line-height:1.5}
+  .pfor{font-size:.45rem;padding:.2rem .4rem;margin-bottom:.5rem}
+  .taka-quote{font-size:.56rem;line-height:1.7;margin-bottom:.6rem}
+  .pname{font-size:.5rem}
+  .pname-maker,.pname-product{font-size:.46rem}
   .cf{flex-wrap:wrap;gap:.3rem;padding-top:.5rem}
   .plink{font-size:.42rem}
   .plbl{font-size:.38rem;padding:.12rem .35rem}

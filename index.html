@@ -98,8 +98,9 @@ nav a.active{color:var(--ink)}
 .info-item a:hover{border-color:var(--sage)}
 
 /* ── FILTER ── */
-.filter-wrap{position:sticky;top:60px;z-index:100;background:rgba(250,248,244,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--ink-ghost)}
-.filter-tabs{display:flex;border-bottom:1px solid var(--ink-ghost);padding:0 clamp(20px,5vw,60px)}
+.filter-wrap{position:sticky;top:60px;z-index:100;background:rgba(250,248,244,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--ink-ghost);overflow:hidden}
+.filter-tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:1px solid var(--ink-ghost);padding:0 clamp(20px,5vw,60px)}
+.filter-tabs::-webkit-scrollbar{display:none}
 .ftab{font-family:var(--sans);font-size:.54rem;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;padding:.75rem 1.2rem .75rem 0;margin-right:1.2rem;transition:color .25s,border-color .25s;white-space:nowrap}
 .ftab:hover{color:var(--ink-mid)}
 .ftab.active{color:var(--ink);border-bottom-color:var(--gold)}
@@ -288,40 +289,13 @@ footer{background:var(--cream2);border-top:1px solid var(--ink-ghost);padding:cl
   .info-bar{flex-direction:column;align-items:flex-start;gap:.4rem;padding:.6rem 20px}
   .info-item{font-size:.68rem}
 
-  /* フィルター：タブ行・ボタン行それぞれ独立横スクロール */
+  /* フィルター：スマホ用 */
   .filter-wrap{overflow:hidden}
-  .filter-tabs{
-    padding:0;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    flex-wrap:nowrap;
-    display:flex;
-    border-bottom:1px solid var(--ink-ghost)
-  }
-  .filter-tabs::-webkit-scrollbar{display:none}
-  .filter-tabs{scrollbar-width:none}
-  .ftab{
-    font-size:.52rem;
-    padding:.85rem 1rem .85rem 1rem;
-    margin-right:0;
-    white-space:nowrap;
-    flex-shrink:0
-  }
+  .filter-tabs{padding:0 12px}
+  .ftab{font-size:.52rem;padding:.8rem .9rem;margin-right:0;flex-shrink:0}
   .filter-panel{padding:0}
-  .filter-list{
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    display:flex;
-    padding:0 4px
-  }
-  .filter-list::-webkit-scrollbar{display:none}
-  .filter-list{scrollbar-width:none}
-  .fbtn{
-    font-size:.52rem;
-    padding:.8rem .8rem;
-    white-space:nowrap;
-    flex-shrink:0
-  }
+  .filter-list{padding:0 12px}
+  .fbtn{font-size:.5rem;padding:.75rem .7rem;flex-shrink:0}
 
   /* セクション */
   .section{padding:40px 20px 8px}

@@ -96,6 +96,23 @@ nav a.active{color:var(--ink)}
   display:flex;flex-wrap:wrap;gap:.5rem 2rem;align-items:center;justify-content:center;
 }
 .info-item{font-family:'Noto Serif JP',var(--serif);font-size:.72rem;font-weight:300;color:var(--ink);letter-spacing:.06em;display:flex;align-items:center;gap:.4rem}
+/* ── v2 なぜ登録が必要なのか（壁の理由を先に置く一枚） ── */
+.why{background:var(--cream2);border-top:1px solid var(--ink-ghost);border-bottom:1px solid var(--ink-ghost);padding:clamp(2.4rem,6vw,3.6rem) clamp(20px,5vw,60px)}
+.why-in{max-width:660px;margin:0 auto}
+.why-eyebrow{font-family:var(--sans);font-size:.54rem;font-weight:400;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem}
+.why-h{font-family:'Noto Serif JP',var(--serif);font-size:clamp(1rem,3.4vw,1.18rem);font-weight:300;line-height:1.9;letter-spacing:.06em;color:var(--ink);margin:0 0 1.4rem}
+.why-p{font-family:'Noto Serif JP',var(--serif);font-size:.82rem;font-weight:200;line-height:2.2;color:var(--ink-mid);letter-spacing:.05em;margin:0 0 1.1rem}
+.why-p em{font-style:normal;color:var(--ink);font-weight:300}
+.why-once{font-family:'Noto Serif JP',var(--serif);font-size:.82rem;font-weight:300;line-height:2.2;color:var(--ink);letter-spacing:.05em;margin:0 0 1.6rem;padding-left:.9rem;border-left:2px solid var(--gold-line)}
+.why-code{background:var(--cream);border:1px solid var(--gold-line);border-radius:3px;padding:1.2rem 1.3rem;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.4rem}
+.why-code-lbl{font-family:var(--sans);font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem}
+.why-code-num{font-family:var(--sans);font-size:1.5rem;font-weight:300;letter-spacing:.14em;color:var(--ink);line-height:1.2}
+.why-copy{font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;color:var(--gold);background:none;border:1px solid var(--gold-line);border-radius:999px;padding:.5rem .9rem;cursor:pointer;transition:all .3s var(--ease);white-space:nowrap}
+.why-copy:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+.why-ship{font-family:'Noto Serif JP',var(--serif);font-size:.74rem;font-weight:300;line-height:2;color:var(--ink);letter-spacing:.04em;margin:1.1rem 0 0}
+.why-ship span{color:var(--ink-soft);font-size:.68rem}
+.why-note{font-family:'Noto Serif JP',var(--serif);font-size:.72rem;font-weight:200;line-height:2;color:var(--ink-soft);letter-spacing:.04em;margin:1.4rem 0 0}
+@media(max-width:520px){.why-code{flex-direction:column;align-items:flex-start}}
 .info-item strong{color:var(--ink);font-weight:300}
 .info-item a{color:var(--sage);text-decoration:none;border-bottom:1px solid rgba(138,158,140,.3);transition:border-color .2s}
 .info-item a:hover{border-color:var(--sage)}
@@ -435,8 +452,34 @@ footer{background:var(--cream2);border-top:1px solid var(--ink-ghost);padding:cl
 <div class="info-bar r">
   <span class="info-item">🛒 <strong>3,600円以上で送料無料</strong>（正規メーカー直送）</span>
   <span class="info-item">💈 サロン専売品は<strong>ご来店でご購入可</strong></span>
-  <span class="info-item">サロンコードは <a href="https://lin.ee/KR1qGTc" target="_blank" rel="noopener">LINE公式メニュー</a>に記載</span>
+  <span class="info-item">ご自宅へは<strong>サロンコード</strong>で（下に記載）</span>
 </div>
+
+<!-- ── WHY／壁の理由を先に置く一枚（v2で新設） ── -->
+<section class="why r" aria-labelledby="why-h">
+  <div class="why-in">
+    <span class="why-eyebrow">Why registration</span>
+    <h2 class="why-h" id="why-h">なぜ、登録が必要なのか</h2>
+
+    <p class="why-p">ここに置いているものは、<em>美容室でしか扱えない決まりのもの</em>です。</p>
+
+    <p class="why-p">ドラッグストアやネット通販で同じ名前のものを見かけることがありますが、正規の流通ではありません。保管の状態が分からないまま何年も経っていたり、中身が入れ替わっていることもあります。髪に毎日使うものなので、そこは譲れないと思っています。</p>
+
+    <p class="why-once">登録は、一度きりです。<br>二度目からは、選んで、届くのを待つだけになります。</p>
+
+    <div class="why-code">
+      <div>
+        <span class="why-code-lbl">サロンコード</span>
+        <span class="why-code-num" id="salonCode">138663</span>
+      </div>
+      <button class="why-copy" id="codeCopy" type="button">番号をコピー</button>
+    </div>
+
+    <p class="why-ship">3,600円から、送料はいただきません。<br><span>（一般には5,000円ほどが目安です）</span></p>
+
+    <p class="why-note">サロンでのお渡しをご希望の方は、登録は必要ありません。ご来店のときにお声がけください。</p>
+  </div>
+</section>
 
 <!-- ── FILTER ── -->
 <nav class="filter-wrap" aria-label="絞り込む">
@@ -1327,6 +1370,27 @@ fbtns.forEach(btn=>{
     }
   });
 });
+</script>
+<script>
+/* v2 サロンコードのコピー（探させない・打たせない） */
+(function(){
+  var b=document.getElementById('codeCopy'), c=document.getElementById('salonCode');
+  if(!b||!c) return;
+  b.addEventListener('click',function(){
+    var t=(c.textContent||'').trim();
+    function done(){ var o=b.textContent; b.textContent='コピーしました'; setTimeout(function(){b.textContent=o;},1600); }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done).catch(fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta=document.createElement('textarea');
+      ta.value=t; ta.setAttribute('readonly',''); ta.style.position='absolute'; ta.style.left='-9999px';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+})();
 </script>
 </body>
 </html>
